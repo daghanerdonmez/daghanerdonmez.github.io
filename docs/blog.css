@@ -1,0 +1,41 @@
+body {
+    background-color: #7b8788; /* Dark background */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center text and image */
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.header {
+    background-color: rgb(88, 74, 43);
+}
+
+.header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header nav ul li {
+    margin: 5px 15px;
+}
+
+.header nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
