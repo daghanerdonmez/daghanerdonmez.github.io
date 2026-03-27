@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      VALOR – Variance-Based Transmitter Localization in Vessel-Like Molecular
+      Communication Channels
+    </title>
+
+    <!-- CMU Serif (same as LeWorldModel) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/computer-modern/cmu-serif.css"
+    />
+
+    <!-- Bulma CSS (same as LeWorldModel) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <!-- Font Awesome (for button icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Academicons (for arXiv icon) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          tags: "ams",
+        },
+        options: { skipHtmlTags: ["script", "noscript", "style", "textarea"] },
+      };
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+      async
+    ></script>
+
+    <style>
+      body {
+        font-family: "CMU Serif", Georgia, serif;
+        font-weight: 500;
+        color: #4a4a4a;
+        background: #fff;
+      }
+
+      /* Hero / header section — pinkish-white background like LeWM */
+      .hero.is-light {
+        /*background-color: #fdf6f4;*/
+        background-color: #ffffff;
+      }
+
+      /* Title */
+      .publication-title {
+        font-family: "CMU Serif", Georgia, serif;
+        font-weight: 700 !important;
+        line-height: 1.15;
+        letter-spacing: 0;
+        color: #333 !important;
+      }
+
+      /* Authors */
+      .publication-authors {
+        font-family: "CMU Serif", Georgia, serif;
+        font-weight: 400;
+      }
+
+      .publication-authors a {
+        color: #226999 !important;
+        font-weight: 400;
+      }
+
+      .publication-authors a:hover {
+        text-decoration: underline;
+      }
+
+      .author-block {
+        display: inline-block;
+      }
+
+      /* Affiliation */
+      .publication-venue {
+        color: #555;
+        font-weight: bold;
+      }
+
+      /* Link buttons */
+      .publication-links .button {
+        font-family: "CMU Serif", Georgia, serif;
+        background: #f8f8f8;
+        border: none;
+        color: #8c8e90;
+        border-radius: 8px;
+        font-size: 0.95rem;
+      }
+
+      .publication-links .button:hover {
+        background: #eee;
+        color: #333;
+      }
+
+      /* Section headings */
+      .section-heading {
+        font-family: "CMU Serif", Georgia, serif;
+        font-weight: 700;
+        font-size: 2rem;
+        text-align: center;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      .subsection-heading {
+        font-family: "CMU Serif", Georgia, serif;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      /* Body text — justified, same as LeWM */
+      .content-text {
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: justify;
+        color: #4a4a4a;
+      }
+
+      /* Abstract box — rounded card like LeWM */
+      .abstract-box {
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 2rem 2.5rem;
+      }
+
+      /* TL;DR line below abstract */
+      .tldr-line {
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.95rem;
+        color: #4a4a4a;
+        text-align: justify;
+        margin-top: 1rem;
+        line-height: 1.65;
+      }
+
+      .tldr-line strong {
+        font-weight: 800;
+      }
+
+      /* Figure placeholders */
+      .fig-placeholder {
+        width: 100%;
+        aspect-ratio: 16/7;
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        color: #bbb;
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.85rem;
+      }
+
+      .fig-placeholder.sq {
+        aspect-ratio: 4/3;
+      }
+      .fig-placeholder.wide {
+        aspect-ratio: 16/5;
+      }
+
+      figure img {
+        border: none;
+        outline: none;
+      }
+
+      figcaption {
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.875rem;
+        color: #666;
+        line-height: 1.5;
+        margin-top: 0.6rem;
+        text-align: justify;
+      }
+
+      /* Table */
+      table {
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.9rem;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead tr {
+        border-top: 2px solid #333;
+        border-bottom: 1px solid #bbb;
+      }
+
+      th {
+        padding: 8px 12px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #555;
+        text-align: left;
+      }
+
+      td {
+        padding: 8px 12px;
+        border-bottom: 1px solid #eee;
+        color: #4a4a4a;
+      }
+
+      tfoot tr {
+        border-top: 2px solid #333;
+      }
+      tfoot td {
+        font-size: 0.82rem;
+        color: #888;
+        font-style: italic;
+      }
+
+      tr.ours td {
+        font-weight: 700;
+        background: #f0f6ff;
+      }
+
+      /* Citation block */
+      .citation-wrap {
+        position: relative;
+      }
+
+      pre.bibtex {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 1.25rem 1.5rem;
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        line-height: 1.7;
+        overflow-x: auto;
+        white-space: pre;
+        color: #333;
+      }
+
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.75rem;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 3px 10px;
+        cursor: pointer;
+        color: #666;
+        transition: all 0.15s;
+      }
+
+      .copy-btn:hover {
+        background: #333;
+        color: #fff;
+        border-color: #333;
+      }
+
+      /* Footer */
+      .footer {
+        background: #fdf6f4;
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-text {
+        font-family: "CMU Serif", Georgia, serif;
+        font-size: 0.85rem;
+        color: #888;
+        text-align: center;
+        line-height: 1.7;
+      }
+
+      .footer-text a {
+        color: #666;
+        text-decoration: underline;
+      }
+
+      /* Section divider */
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .hero-body {
+        padding: 4rem 1.5rem 3rem;
+      }
+
+      .is-max-desktop {
+        max-width: 760px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════ HERO / HEADER ══════ -->
+    <section class="hero is-light">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title" style="font-size: 2rem">
+                Variance Based Transmitter Localization in<br />
+                Vessel-Like Molecular Communication Channels
+              </h1>
+
+              <div
+                class="is-size-5 publication-authors"
+                style="margin-top: 1.25rem"
+              >
+                <span class="author-block">
+                  <a href="mailto:daghanerdonmez@gmail.com">Dağhan Erdönmez</a
+                  >,&ensp;
+                </span>
+                <span class="author-block">
+                  <a href="mailto:birkan.yilmaz@bogazici.edu.tr"
+                    >H. Birkan Yilmaz</a
+                  >
+                </span>
+              </div>
+
+              <div
+                class="is-size-5 publication-authors"
+                style="margin-top: 0.5rem; color: #555"
+              >
+                <a href="https://sites.google.com/view/netlabcmpe"
+                  >NETLAB Computer Networks Research Group</a
+                >
+              </div>
+
+              <div
+                class="is-size-5 publication-authors"
+                style="margin-top: 0rem; color: #555"
+              >
+                Department of Computer Engineering, Boğaziçi University,
+                Istanbul, Türkiye
+              </div>
+
+              <!--- 
+              <div
+                class="is-size-6"
+                style="margin-top: 0.4rem; color: #888; font-style: italic"
+              >
+                IEEE Wireless Communications Letters, 2026
+              </div> 
+              -->
+
+              <!-- Link buttons -->
+              <div class="column has-text-centered" style="margin-top: 1.5rem">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/abs/2603.25213"
+                      class="external-link button is-normal is-rounded"
+                      target="_blank"
+                    >
+                      <span class="icon"><i class="ai ai-arxiv"></i></span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/daghanerdonmez/vessel2"
+                      class="external-link button is-normal is-rounded"
+                    >
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <!---<span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded"
+                    >
+                      <span class="icon"
+                        ><i class="fas fa-chart-line"></i
+                      ></span>
+                      <span>Simulation Data</span>-->
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ ABSTRACT ══════ -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="abstract-box">
+          <h2
+            class="section-heading"
+            style="font-size: 1.75rem; margin-bottom: 1.2rem"
+          >
+            Abstract
+          </h2>
+          <p class="content-text">
+            Transmitter localization in vessel-like molecular communication
+            channels is a fundamental problem with potential applications in
+            healthcare. Existing analytical solutions either assume knowledge of
+            emission time or require multiple closely spaced receivers, which
+            limits their applicability in realistic scenarios. In this letter,
+            we propose a simple closed-form approximation that exploits the
+            <em>temporal variance</em> of the received molecular signal to
+            estimate the distance between the transmitter and the receiver
+            without emission time information. The method is derived from a
+            Gaussian approximation of the received signal near its peak and
+            gives an explicit variance–distance relation. Simulation results in
+            physically relevant capillary vessel scale show that the proposed
+            method achieves distance prediction with error on the order of 1%.
+          </p>
+        </div>
+
+        <p class="tldr-line" style="margin-top: 1.5rem">
+          <strong>TL;DR:</strong> VALOR estimates TX–RX distance from a single
+          receiver using only the temporal variance of the received signal — no
+          emission time required — achieving &sim;1% error in capillary-scale
+          environments.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════ SYSTEM MODEL ══════ -->
+    <section class="section" style="padding-top: 1rem">
+      <div class="container is-max-desktop">
+        <h2 class="section-heading">System Model</h2>
+
+        <p class="content-text">
+          We consider a cylindrical vessel-like environment with fully
+          reflective lateral boundaries, where particles propagate by diffusion
+          and advection under a Poiseuille flow profile. A ring-shaped observing
+          receiver of width $w$ is placed at axial distance $l$ downstream on
+          the vessel boundary (Fig. 1).
+        </p>
+
+        <figure style="margin: 2rem 0">
+          <img
+            src="figures/channelbirkanhocayla-cropped.svg"
+            alt="..."
+            style="
+              width: 90%;
+              border-radius: 6px;
+              display: block;
+              margin: 0 auto;
+            "
+          />
+
+          <figcaption>
+            <strong>Fig. 1.</strong> Vessel-like MCvD channel with ring-shaped
+            observing receiver. Messenger molecules are released by TX-1 or TX-2
+            and observed at the downstream ring receiver.
+          </figcaption>
+        </figure>
+
+        <p class="subsection-heading">Propagation Model.</p>
+        <p class="content-text">
+          The net displacement of a particle in a single time step $\Delta t$
+          combines diffusion and Poiseuille advection:
+        </p>
+
+        $$\Delta\vec{r} = \bigl(\Delta X_{\mathrm{diffusion}} + \Delta
+        X_{\mathrm{flow}},\;\Delta Y_{\mathrm{diffusion}},\;\Delta
+        Z_{\mathrm{diffusion}}\bigr),$$
+
+        <p class="content-text">
+          where $\Delta X_{\mathrm{diffusion}}, \Delta Y_{\mathrm{diffusion}},
+          \Delta Z_{\mathrm{diffusion}} \sim \mathcal{N}(0,\, 2D\Delta t)$, and
+          the axial flow displacement follows the parabolic Poiseuille profile
+        </p>
+
+        $$\Delta X_{\mathrm{flow}} = v(r)\,\Delta t = 2v_{\mathrm{avg}}\!\left(1
+        - \frac{r^2}{r_v^2}\right)\!\Delta t.$$
+
+        <p class="subsection-heading">Channel Model.</p>
+        <p class="content-text">
+          The Péclet number $\mathrm{Pe} = v_{\mathrm{avg}} r_v / D$
+          characterises the relative importance of advection over diffusion.
+          Introducing the effective diffusion coefficient $D_e = D(1 +
+          \mathrm{Pe}^2/48)$ collapses the 3-D transport problem into an
+          equivalent 1-D form. The probability of a molecule being detected at
+          distance $l$ at time $t$ is
+        </p>
+
+        $$P(l,\,t) \approx \frac{w}{\sqrt{4\pi D_e t}}\exp\!\left(-\frac{(l -
+        v_{\mathrm{avg}}\,t)^2}{4D_e t}\right).$$
+
+        <p class="content-text">
+          Although $P(l,t)$ is Gaussian in the spatial variable $l$, it is not
+          Gaussian in time $t$. The VALOR method exploits a local Gaussian
+          approximation near the signal peak to expose this structure in the
+          time domain.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════ METHOD ══════ -->
+    <section class="section" style="padding-top: 1rem">
+      <div class="container is-max-desktop">
+        <h2 class="section-heading">
+          VALOR: VAriance-based LOcalization and Ranging
+        </h2>
+
+        <p class="content-text">
+          The received signal peaks at $t_{\mathrm{peak}} = l/v_{\mathrm{avg}}$.
+          Expanding the exponent of $P(l,t)$ as a second-order Taylor series
+          around $t_{\mathrm{peak}}$ shows that the arrival waveform is locally
+          Gaussian in time with variance
+        </p>
+
+        $$\sigma^2 = \frac{2 D_e\, l}{v_{\mathrm{avg}}^3}.$$
+
+        <p class="content-text">
+          Inverting this relation yields a closed-form distance estimator that
+          requires
+          <em>no knowledge of the emission start time</em>:
+        </p>
+
+        $$\hat{l} = \frac{\hat{\sigma}^2\, v_{\mathrm{avg}}^3}{2 D_e}.$$
+
+        <p class="subsection-heading">
+          Validity of the Gaussian Approximation.
+        </p>
+        <p class="content-text">
+          The approximation is controlled by two dimensionless correction
+          factors arising from the cubic and quartic Taylor remainders:
+        </p>
+
+        $$\alpha_3 = 3\sqrt{2}\sqrt{\frac{D_e}{l\,v_{\mathrm{avg}}}}, \qquad
+        \alpha_4 = \frac{24\,D_e}{l\,v_{\mathrm{avg}}}.$$
+
+        <p class="content-text">
+          Both are small when $D_e / (l\,v_{\mathrm{avg}}) \ll 1$, a condition
+          satisfied in capillary-scale environments at millimetre-range TX–RX
+          separations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════ RESULTS ══════ -->
+    <section class="section" style="padding-top: 1rem">
+      <div class="container is-max-desktop">
+        <h2 class="section-heading">Simulation Results</h2>
+
+        <p class="content-text">
+          We validate VALOR with a particle-based Monte Carlo simulator ($M =
+          10^6$ molecules, 1000 realisations, $\Delta t = 0.1\,\mathrm{ms}$, $D
+          = 300\,\mu\mathrm{m}^2/\mathrm{s}$, $r_v = 5\,\mu\mathrm{m}$, $w =
+          1\,\mu\mathrm{m}$).
+        </p>
+
+        <p class="subsection-heading">Gaussian Approximation Fit.</p>
+        <p class="content-text">
+          As shown in Fig. 2, the analytical expression closely matches
+          particle-based simulations across all tested velocity and distance
+          combinations, confirming the validity of the approximation in the
+          capillary-scale regime.
+        </p>
+
+        <figure style="margin: 2rem 0">
+          <img
+            src="figures/channelmodelvalidity.svg"
+            alt="..."
+            style="
+              width: 100%;
+              border-radius: 6px;
+              display: block;
+              margin: 0 auto;
+            "
+          />
+          <figcaption>
+            <strong>Fig. 2.</strong> Comparison of simulation results and Eq.
+            (16) for the percentage of sensed molecules under different
+            environment settings ($D = 300\,\mu\mathrm{m}^2/\mathrm{s}$, $r_v =
+            5\,\mu\mathrm{m}$, $w = 1\,\mu\mathrm{m}$).
+          </figcaption>
+        </figure>
+
+        <p class="subsection-heading">Variance–Distance Linearity.</p>
+        <p class="content-text">
+          As predicted by the variance formula, temporal variance increases
+          linearly with $l$. The match, with $R^2 > 0.999$ across all tested
+          velocities, confirms the accuracy of the Gaussian approximation in the
+          capillary-scale regime.
+        </p>
+
+        <div class="columns" style="margin-top: 1.5rem">
+          <div class="column">
+            <figure>
+              <img
+                src="figures/combined_variance_plot_by_w_single_eq20.svg"
+                alt="..."
+                style="
+                  width: 100%;
+                  border-radius: 6px;
+                  display: block;
+                  margin: 0 auto;
+                "
+              />
+              <figcaption>
+                <strong>Fig. 3.</strong> Temporal variance vs. distance for
+                $v_{\mathrm{avg}} = 0.50, 0.75, 1.00\,\mathrm{mm/s}$. All $R^2 =
+                1.000$.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img
+                src="figures/combined_variance_plot.svg"
+                alt="..."
+                style="
+                  width: 100%;
+                  border-radius: 6px;
+                  display: block;
+                  margin: 0 auto;
+                "
+              />
+              <figcaption>
+                <strong>Fig. 4.</strong> Effect of vessel radius $r_v$. Accuracy
+                degrades for large $r_v$.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <figure>
+              <img
+                src="figures/plot2.svg"
+                alt="..."
+                style="
+                  width: 100%;
+                  border-radius: 6px;
+                  display: block;
+                  margin: 0 auto;
+                "
+              />
+              <figcaption>
+                <strong>Fig. 5.</strong> Effect of receiver width $w$. Accurate
+                in the small-$w$ limit.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img
+                src="figures/plot3.svg"
+                alt="..."
+                style="
+                  width: 100%;
+                  border-radius: 6px;
+                  display: block;
+                  margin: 0 auto;
+                "
+              />
+              <figcaption>
+                <strong>Fig. 6.</strong> Prediction error (%) vs. distance for
+                VALOR and the peak-time method [6].
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <p class="subsection-heading">Comparison with the Peak-Time Method.</p>
+        <p class="content-text">
+          VALOR achieves accuracy comparable to the peak-time method of [6]
+          while requiring neither emission-time knowledge nor multiple
+          receivers.
+        </p>
+
+        <div style="overflow-x: auto; margin: 1.5rem 0">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Emission time needed?</th>
+                <th>No. of receivers</th>
+                <th>Error (mm-scale distances)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Peak-time [6]</td>
+                <td>Required</td>
+                <td>1 (if $t_0$ known) or ≥2</td>
+                <td>&lt;1%</td>
+              </tr>
+              <tr class="ours">
+                <td><strong>VALOR (ours)</strong></td>
+                <td><strong>Not required</strong></td>
+                <td><strong>1</strong></td>
+                <td><strong>&lt;1%</strong></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">
+                  VALOR matches peak-time accuracy without its restrictive
+                  assumptions.
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ CONCLUSION ══════ -->
+    <section class="section" style="padding-top: 1rem">
+      <div class="container is-max-desktop">
+        <h2 class="section-heading">Conclusion</h2>
+
+        <p class="content-text">
+          We introduced VALOR, a variance-based method for transmitter
+          localization in vessel-like molecular communication channels. By
+          exploiting the closed-form relation between the temporal variance of
+          the received signal and the TX–RX distance $l$, VALOR operates with a
+          single receiver and requires no knowledge of the emission time.
+          Particle-based simulations at capillary scale confirm prediction
+          errors on the order of 1%, matching peak-time-based approaches that
+          rely on additional assumptions.
+        </p>
+        <p class="content-text" style="margin-top: 1rem">
+          Future work will extend VALOR to connected vessel networks with
+          branching geometries, providing a more realistic assessment of its
+          applicability in biological systems.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════ CITATION ══════ -->
+    <section class="section" style="padding-top: 1rem">
+      <div class="container is-max-desktop">
+        <h2 class="section-heading">Citation (BibTeX)</h2>
+
+        <div class="citation-wrap">
+          <pre class="bibtex" id="bibtex">
+@misc{erdönmez2026variancebasedtransmitterlocalization,
+      title={Variance Based Transmitter Localization in Vessel-Like Molecular Communication Channels}, 
+      author={Dağhan Erdönmez and H. Birkan Yilmaz},
+      year={2026},
+      eprint={2603.25213},
+      archivePrefix={arXiv},
+      primaryClass={cs.IT},
+      url={https://arxiv.org/abs/2603.25213}, 
+}</pre
+          >
+          <button class="copy-btn" onclick="copyBib()">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ FOOTER ══════ -->
+    <footer class="footer">
+      <div class="content has-text-centered footer-text">
+        <p>
+          Boğaziçi University &middot; Department of Computer Engineering
+          &middot; Istanbul, Türkiye
+        </p>
+        <p>
+          <a href="mailto:daghanerdonmez@gmail.com">daghanerdonmez@gmail.com</a>
+          &middot;
+          <a href="mailto:birkan.yilmaz@bogazici.edu.tr"
+            >birkan.yilmaz@bogazici.edu.tr</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function copyBib() {
+        navigator.clipboard
+          .writeText(document.getElementById("bibtex").textContent)
+          .then(() => {
+            const btn = document.querySelector(".copy-btn");
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = "Copy"), 2000);
+          });
+      }
+    </script>
+  </body>
+</html>
