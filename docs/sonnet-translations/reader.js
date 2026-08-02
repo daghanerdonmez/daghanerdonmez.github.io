@@ -4,7 +4,7 @@
   if (!mount) return;
 
   try {
-    const response = await fetch("sonnet.json");
+    const response = await fetch("sonnet.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(`Could not load sonnet.json (${response.status})`);
 
     const sonnet = await response.json();
@@ -18,15 +18,16 @@
     document.title = `${sonnet.displayTitle || sonnet.title} — Dağhan Erdönmez`;
     document.documentElement.lang = sonnet.pageLanguage || "en";
 
-    mount.querySelector("[data-title]").textContent = sonnet.displayTitle || sonnet.title;
-    mount.querySelector("[data-byline]").textContent = sonnet.author || "William Shakespeare";
+    setText("[data-title]", sonnet.displayTitle || sonnet.title);
+    setText("[data-byline]", sonnet.author || "William Shakespeare");
 
     const headings = mount.querySelectorAll("[data-column-heading]");
-    headings[0].textContent = labels.original;
-    headings[1].textContent = labels.english;
-    headings[2].textContent = labels.translation;
+    [labels.original, labels.english, labels.translation].forEach((label, index) => {
+      if (headings[index]) headings[index].textContent = label;
+    });
 
     const lines = mount.querySelector("[data-lines]");
+    if (!lines) throw new Error("The reading-page template is missing its lines container.");
     const fragment = document.createDocumentFragment();
 
     sonnet.lines.forEach((line, index) => {
@@ -59,13 +60,21 @@
 
     lines.replaceChildren(fragment);
 
-    const note = mount.querySelector("[data-translator-note]");
+    let note = mount.querySelector("[data-translator-note]");
     if (sonnet.translatorNote) {
+      if (!note) {
+        note = document.createElement("section");
+        note.className = "translator-note";
+        note.dataset.translatorNote = "";
+        note.innerHTML = '<h2 data-note-title></h2><p data-note-text></p>';
+        mount.append(note);
+      }
+
       note.querySelector("[data-note-title]").textContent =
         sonnet.translatorNoteTitle || "Çevirmenin Notu";
       note.querySelector("[data-note-text]").textContent = sonnet.translatorNote;
       note.hidden = false;
-    } else {
+    } else if (note) {
       note.remove();
     }
 
@@ -74,6 +83,8 @@
 
     function setNavigation(direction, target) {
       const link = document.querySelector(`[data-${direction}]`);
+      if (!link) return;
+
       if (!target) {
         link.hidden = true;
         return;
@@ -82,7 +93,15 @@
       link.href = target.href;
       link.textContent = direction === "previous" ? `← ${target.label}` : `${target.label} →`;
     }
+
+    function setText(selector, value) {
+      const element = mount.querySelector(selector);
+      if (element) element.textContent = value;
+    }
   } catch (error) {
-    mount.innerHTML = `<p class="error">This sonnet could not be loaded. ${error.message}</p>`;
+    const message = document.createElement("p");
+    message.className = "error";
+    message.textContent = `This sonnet could not be loaded. ${error.message}`;
+    mount.replaceChildren(message);
   }
 })();
