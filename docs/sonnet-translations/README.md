@@ -9,14 +9,16 @@ digits: `001`, `002`, `003`, and so on.
    same object in the `lines` array. This is what keeps the three columns aligned.
 4. Set `group` to `quatrain-1`, `quatrain-2`, `quatrain-3`, or `couplet`. Matching
    group names receive matching color highlights in all three columns.
-5. Set optional `previous` and `next` objects when those pages exist. Example:
+5. Add your note to `translatorNote`. Leave it empty (`""`) to hide the entire
+   **Çevirmenin Notu** section. Use `\n` inside the text for a line break.
+6. Set optional `previous` and `next` objects when those pages exist. Example:
 
    ```json
    "previous": { "href": "../001/", "label": "1. Sone" },
    "next": { "href": "../003/", "label": "3. Sone" }
    ```
 
-6. Add the new page to the **Sonnet Translations** list in `docs/index.html`:
+7. Add the new page to the **Sonnet Translations** list in `docs/index.html`:
 
    ```html
    <li><a href="sonnet-translations/002/">2. Sone</a></li>

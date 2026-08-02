@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
       name="description"
       content="A line-by-line Shakespeare sonnet translation."
     />
-    <title>Sonnet Translation — Dağhan Erdönmez</title>
+    <title>Sone Çevirilerim</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,12 +20,10 @@
   <body>
     <header class="site-bar">
       <a class="site-name" href="../../">Dağhan Erdönmez</a>
-      <a href="../../">All work</a>
     </header>
 
     <main class="reader" data-sonnet-reader>
       <header class="sonnet-heading">
-        <p class="eyebrow" data-eyebrow>Sonnet Translations</p>
         <h1 data-title>Sonnet</h1>
         <p class="byline" data-byline>William Shakespeare</p>
       </header>
@@ -40,12 +38,14 @@
         <div class="lines" data-lines aria-live="polite"></div>
       </section>
 
-      <p class="reader-note" data-note></p>
+      <section class="translator-note" data-translator-note hidden>
+        <h2 data-note-title>Çevirmenin Notu</h2>
+        <p data-note-text></p>
+      </section>
     </main>
 
     <nav class="sonnet-nav" aria-label="Sonnet navigation">
       <a class="previous" data-previous href="#">Previous</a>
-      <a href="../../">All sonnets</a>
       <a class="next" data-next href="#">Next</a>
     </nav>
   </body>

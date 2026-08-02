@@ -59,15 +59,6 @@ a:focus-visible {
   text-align: center;
 }
 
-.eyebrow {
-  margin: 0 0 0.45rem;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
 h1 {
   margin: 0;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
@@ -105,11 +96,10 @@ h1 {
 }
 
 .column-heading {
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .lines {
@@ -169,15 +159,28 @@ h1 {
   background: transparent;
 }
 
-.reader-note {
+.translator-note {
   max-width: 48rem;
   margin: 3.5rem auto 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
   color: var(--muted);
+  text-align: center;
+}
+
+.translator-note h2 {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.translator-note p {
+  margin: 0;
   font-size: 0.98rem;
   line-height: 1.6;
-  text-align: center;
+  white-space: pre-line;
 }
 
 .sonnet-nav {
@@ -256,8 +259,7 @@ h1 {
     font-family: "EB Garamond", Georgia, serif;
     font-size: 0.66rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 }
 

@@ -11,14 +11,13 @@
     const labels = {
       original: "Original",
       english: "Modern English",
-      translation: "My Translation",
+      translation: "Türkçe",
       ...(sonnet.columnLabels || {}),
     };
 
     document.title = `${sonnet.displayTitle || sonnet.title} — Dağhan Erdönmez`;
     document.documentElement.lang = sonnet.pageLanguage || "en";
 
-    mount.querySelector("[data-eyebrow]").textContent = sonnet.collection || "Sonnet Translations";
     mount.querySelector("[data-title]").textContent = sonnet.displayTitle || sonnet.title;
     mount.querySelector("[data-byline]").textContent = sonnet.author || "William Shakespeare";
 
@@ -60,9 +59,12 @@
 
     lines.replaceChildren(fragment);
 
-    const note = mount.querySelector("[data-note]");
-    if (sonnet.note) {
-      note.textContent = sonnet.note;
+    const note = mount.querySelector("[data-translator-note]");
+    if (sonnet.translatorNote) {
+      note.querySelector("[data-note-title]").textContent =
+        sonnet.translatorNoteTitle || "Çevirmenin Notu";
+      note.querySelector("[data-note-text]").textContent = sonnet.translatorNote;
+      note.hidden = false;
     } else {
       note.remove();
     }
