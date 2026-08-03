@@ -1,0 +1,32 @@
+{
+  "number": 0,
+  "title": "",
+  "displayTitle": "2. Sone",
+  "author": "William Shakespeare",
+  "pageLanguage": "tr",
+  "columnLabels": {
+    "original": "Original",
+    "english": "Modern English",
+    "translation": "Türkçe"
+  },
+  "lines": [
+    { "original": "When forty winters shall besiege thy brow", "english": "When forty winters will occupy your forehead,", "translation": "Kırk kış çökünce alnına,", "group": "quatrain-1" },
+    { "original": "And dig deep trenches in thy beauty’s field,", "english": "And dig deep trenches the field that beauty now occupies,", "translation": "Ve derin çukurlar yarınca şimdi güzelliğin hükmü olan o diyara,", "group": "quatrain-1" },
+    { "original": "Thy youth’s proud livery, so gazed on now,", "english": "The proud clothing of your youth, so admired by others now,", "translation": "Üstünde taşıdığın ve herkesin hayran olduğu o gençlik elbisen,", "group": "quatrain-1" },
+    { "original": "Will be a tattered weed, of small worth held.", "english": "Will be ripped rags, considered to be worth little.", "translation": "Paralanacak üstünde, beş para etmeyecek.", "group": "quatrain-1" },
+    { "original": "Then being asked where all thy beauty lies,", "english": "Then when someone asks you where all your beauty is,", "translation": "Sonra biri sorarsa sana nerede kaldı tüm bu güzellik,", "group": "quatrain-2" },
+    { "original": "Where all the treasure of thy lusty days,", "english": "Where all the treasure of your sexually active days lies,", "translation": "Nerede o şehvetli günlerinin definesi diye,", "group": "quatrain-2" },
+    { "original": "To say within thine own deep-sunken eyes", "english": "To say that it lies within your own deep-sunken eyes,", "translation": "Çökmüş gözlerinin içinde saklı olduğunu söylemek,", "group": "quatrain-2" },
+    { "original": "Were an all-eating shame and thriftless praise.", "english": "Would be an all-consuming shame and wasteful of praise.", "translation": "Büsbütün ayıp ve tüm o övgülerin israfı olacak.", "group": "quatrain-2" },
+    { "original": "How much more praise deserved thy beauty’s use", "english": "The use of your beauty would deserve so much more praise", "translation": "Ah daha ne övgüler yağardı bu güzelliğin tasarrufuna,", "group": "quatrain-3" },
+    { "original": "If thou couldst answer, “This fair child of mine", "english": "If you could answer:  'This beautiful child of mine", "translation": "Eğer söyleyebilseydin: 'Güzel evladımdır güzelliğimin ispatı,", "group": "quatrain-3" },
+    { "original": "Shall sum my count and make my old excuse,”", "english": "Is the receipt of my beauty and the excuse for my oldness.'", "translation": "Aldığım bu yaşların sebebi ondandır.'", "group": "quatrain-3" },
+    { "original": "Proving his beauty by succession thine.", "english": "And his beauty will be proved because he is your son.", "translation": "Onun güzelliğinin ispatı ise olurdu senden olması.", "group": "quatrain-3" },
+    { "original": "This were to be new made when thou art old,", "english": "This child would be youthful when you are old,", "translation": "Evladın kalacak gencecik sen yaşlanıp giderken,", "group": "couplet" },
+    { "original": "And see thy blood warm when thou feel’st it cold.", "english": "You would see your blood warm when you feel it growing cold.", "translation": "Isıtacak kalbini onun sıcaklığı sen git gide soğurken.", "group": "couplet" }
+  ],
+  "translatorNoteTitle": "Çevirmenin Notu",
+  "translatorNote": "",
+  "previous": null,
+  "next": null
+}

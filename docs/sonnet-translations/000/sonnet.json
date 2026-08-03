@@ -1,0 +1,32 @@
+{
+  "number": 0,
+  "title": "",
+  "displayTitle": "Yeni Sone",
+  "author": "William Shakespeare",
+  "pageLanguage": "tr",
+  "columnLabels": {
+    "original": "Original",
+    "english": "Modern English",
+    "translation": "Türkçe"
+  },
+  "lines": [
+    { "original": "", "english": "", "translation": "", "group": "quatrain-1" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-1" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-1" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-1" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-2" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-2" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-2" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-2" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-3" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-3" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-3" },
+    { "original": "", "english": "", "translation": "", "group": "quatrain-3" },
+    { "original": "", "english": "", "translation": "", "group": "couplet" },
+    { "original": "", "english": "", "translation": "", "group": "couplet" }
+  ],
+  "translatorNoteTitle": "Çevirmenin Notu",
+  "translatorNote": "",
+  "previous": null,
+  "next": null
+}

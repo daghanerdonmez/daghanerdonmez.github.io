@@ -3,7 +3,7 @@
 Each numbered folder is one published sonnet. The folder name always uses three
 digits: `001`, `002`, `003`, and so on.
 
-1. Copy the `001` folder and rename the copy to the next three-digit number.
+1. Copy the `000` folder and rename the copy to the next three-digit number.
 2. Edit only `sonnet.json` in the new folder; the copied `index.html` is generic.
 3. Keep each corresponding original, modern-English, and translated line in the
    same object in the `lines` array. This is what keeps the three columns aligned.
