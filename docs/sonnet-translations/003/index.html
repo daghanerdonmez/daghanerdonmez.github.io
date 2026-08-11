@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A line-by-line Shakespeare sonnet translation." />
+    <title>Yeni Sone — Dağhan Erdönmez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+    />
+    <link rel="stylesheet" href="../reader.css?v=20260803-2" />
+    <script src="../reader.js?v=20260803-2" defer></script>
+  </head>
+  <body>
+    <header class="site-bar">
+      <a class="site-name" href="../../">Dağhan Erdönmez</a>
+    </header>
+
+    <main class="reader" data-sonnet-reader>
+      <header class="sonnet-heading">
+        <h1 data-title>Yeni Sone</h1>
+        <p class="byline" data-byline>William Shakespeare</p>
+      </header>
+
+      <section class="comparison" aria-label="Satır satır sone karşılaştırması">
+        <div class="column-headings" aria-hidden="true">
+          <span></span>
+          <span class="column-heading" data-column-heading>Original</span>
+          <span class="column-heading" data-column-heading>Modern English</span>
+          <span class="column-heading" data-column-heading>Türkçe</span>
+        </div>
+        <div class="lines" data-lines aria-live="polite"></div>
+      </section>
+
+      <section class="translator-note" data-translator-note hidden>
+        <h2 data-note-title>Çevirmenin Notu</h2>
+        <p data-note-text></p>
+      </section>
+    </main>
+
+    <nav class="sonnet-nav" aria-label="Sone gezintisi">
+      <a class="previous" data-previous href="#">Önceki</a>
+      <a class="next" data-next href="#">Sonraki</a>
+    </nav>
+  </body>
+</html>
